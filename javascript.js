@@ -22,7 +22,21 @@ window.onload = function(){
 
     e.stopPropagation();
   }
-  
+
+  // Set the basic operations
+  document.querySelectorAll(".operations").forEach(addEventListener("click",operate));
+
+  function operate(e){
+    if(e.target!==e.currentTarget){
+      var clickedItem = e.target.innerHTML;
+      operator = clickedItem;
+      newnumber = number;
+  		number = "";
+  		total.innerHTML = operator;
+    }
+    e.stopPropagation();
+
+  }
 
 
 
