@@ -22,21 +22,45 @@ window.onload = function(){
 
     e.stopPropagation();
   }
+  // Set the equals operator
+  document.getElementById("equals").addEventListener("click",equal);
+  function equal(){
+  if (operator === "+"){
+    number = (parseInt(number, 10) + parseInt(newnumber,10)).toString(10);
+  } else if (operator === "-"){
+    number = (parseInt(newnumber, 10) - parseInt(number,10)).toString(10);
+  } else if (operator === "/"){
+    number = (parseInt(newnumber, 10) / parseInt(number,10)).toString(10);
+  } else if (operator === "*"){
+    number = (parseInt(newnumber, 10) * parseInt(number,10)).toString(10);
+  }
+  total.innerHTML = number;
 
-  // Set the basic operations
+  number = "";
+  newnumber = "";
+  }
+
+  // Set the display of the basic operations, but equals
   document.querySelectorAll(".operations").forEach(addEventListener("click",operate));
 
   function operate(e){
-    if(e.target!==e.currentTarget){
+    if(e.target!==e.currentTarget && e.target.id !== "equals"){
       var clickedItem = e.target.innerHTML;
       operator = clickedItem;
-      newnumber = number;
-  		number = "";
-  		total.innerHTML = operator;
+      if(operator === "." && number.indexOf(".") == -1){
+        number += operator;
+        total.innerHTML = number;
+      }else{
+        newnumber = number;
+  		  number = "";
+        total.innerHTML = operator;
+      }
     }
     e.stopPropagation();
 
   }
+
+
 
 
 
