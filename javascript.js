@@ -44,10 +44,10 @@ window.onload = function(){
   document.querySelectorAll(".operations").forEach(addEventListener("click",operate));
 
   function operate(e){
-    if(e.target!==e.currentTarget && e.target.id !== "equals"){
+    if(e.target!==e.currentTarget && e.target.id !== "equals" && number.indexOf(".") == -1){
       var clickedItem = e.target.innerHTML;
       operator = clickedItem;
-      if(operator === "." && number.indexOf(".") == -1){
+      if(operator === "." ){
         number += operator;
         total.innerHTML = number;
       }else{
