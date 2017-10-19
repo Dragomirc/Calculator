@@ -44,17 +44,21 @@ window.onload = function(){
   document.querySelectorAll(".operations").forEach(addEventListener("click",operate));
 
   function operate(e){
-    if(e.target!==e.currentTarget && e.target.id !== "equals" && number.indexOf(".") == -1){
+    if(e.target!==e.currentTarget && e.target.id !== "equals"){
       var clickedItem = e.target.innerHTML;
       operator = clickedItem;
-      if(operator === "." ){
-        number += operator;
-        total.innerHTML = number;
-      }else{
-        newnumber = number;
-  		  number = "";
-        total.innerHTML = operator;
-      }
+
+        if(operator !== "." ){
+          newnumber = number;
+  		    number = "";
+          total.innerHTML = operator;
+
+        }else if(number.indexOf(".") === -1){
+          number += operator;
+          total.innerHTML = number;
+
+        }
+
     }
     e.stopPropagation();
 
